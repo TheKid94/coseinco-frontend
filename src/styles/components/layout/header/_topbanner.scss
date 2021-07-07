@@ -1,0 +1,12 @@
+.top-banner{
+    background-color: $g-80;
+    color: $g-30;
+
+    &__icon{
+        width: rem(20px);
+        height: rem(20px);
+        path{
+            fill: $g-30;
+        }
+    }
+}

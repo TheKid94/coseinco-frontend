@@ -1,0 +1,41 @@
+.card-product {
+    position: relative;
+    border-radius: $border-radious;
+    &__colors-box {
+        border: 2px solid $ui-03;
+        border-radius: 50%;
+        padding: 2px;
+        .color-box__content {
+            border-radius: 50%;
+            width: 0.75rem;
+            height: 0.75rem;
+            padding: 0.25rem;
+        }
+        &--add {
+            .color-box__content {
+                position: relative;
+                svg {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: rem(14px);
+                    height: rem(14px);
+                    path{
+                        fill: $text-02
+                    }
+                }
+            }
+        }
+    }
+
+    &__offert {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0.25rem;
+        background-color: $support-01;
+        color: $text-04;
+        border-radius: $border-radious;
+    }
+}
