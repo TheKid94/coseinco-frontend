@@ -5,15 +5,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Thumbs } from "swiper/core";
 
 import {
-    changeColorSelected,
-    getProductById,
-    getProductInfoById,
-    getProductsRelated,
+    getProductById
 } from "../../redux-action/productDetailAction";
 
 import { ReactComponent as Facebook } from "../../assets/icons/Facebook.svg";
 import { ReactComponent as Whatsapp } from "../../assets/icons/Whatsapp.svg";
-import { ReactComponent as Rule } from "../../assets/icons/Rule.svg";
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -58,7 +54,7 @@ const DetailProductSlider = ({ productsImg }) => {
 const DetailProduct = () => {
     const { SKU } = useParams();
     const dispatch = useDispatch();
-    const { product, info, colorSelected } = useSelector(
+    const { product, colorSelected } = useSelector(
         (state) => state.product
     );
     const [optionsSelected, setOptionsSelected] = useState({
@@ -165,7 +161,7 @@ const DetailProduct = () => {
                         <a
                             href={`//www.facebook.com/sharer.php?u=${window.location.href}`}
                             target="_blank"
-                            without
+                            without="true"
                             rel="noreferrer"
                             className="detail-product__link-fb btn s-mr-2"
                         >

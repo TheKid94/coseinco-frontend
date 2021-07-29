@@ -37,7 +37,7 @@ $ui-03: $g-20;
 $ui-04: $g-50;
 $ui-05: $g-100;
 
-$interactive: $g-80;
+$interactive: #242e42;
 
 $text-01: $g-100;
 $text-02: $g-70;
@@ -74,7 +74,7 @@ $disabled-03: $g-50;
 $danger: $red-60;
 $overlay-01: rgba(22, 22, 22, 0.5);
 
-$hover-primary: $g-75;
+$hover-primary: #1d2636;
 $hover-ui: $g-15;
 $hover-selected-ui: $g-25;
 $hover-danger: $red-70;
@@ -96,4 +96,8 @@ $skeleton-02: $g-30;
 
 .ui-01{
     background-color: $ui-01;
+}
+
+.ui-03{
+    background-color: $ui-03;
 }

@@ -2,8 +2,7 @@ $header-height: 5rem;
 $header-height-mobile: rem(60px);
 
 .header {
-    background-color: $ui-background;
-
+    background-color: $interactive;
     &__container {
         position: relative;
         grid-template-rows: $header-height;
@@ -12,6 +11,9 @@ $header-height-mobile: rem(60px);
             margin: 0;
             grid-template-rows: $header-height-mobile;
         }
+    }
+    &__logo{
+        color: #dde9f8;
     }
     &__logo-img {
         @include to(lg) {
@@ -50,7 +52,9 @@ $header-height-mobile: rem(60px);
     &__icon {
         width: rem(24px);
         height: rem(24px);
-
+        & path{
+            fill: #dde9f8;
+        }
         &--alert {
             path {
                 fill: $text-error;

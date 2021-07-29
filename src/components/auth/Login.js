@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { uiCloseLogin } from "../../redux-action/uiAction";
+import { uiCloseLogin, uiIsLogin } from "../../redux-action/uiAction";
+import GoogleLogin from "react-google-login";
 
 import { ReactComponent as Facebook } from "../../assets/icons/Facebook.svg";
 import { ReactComponent as Google } from "../../assets/icons/Google.svg";
@@ -13,7 +14,11 @@ const Login = () => {
     const { openLogin } = useSelector((state) => state.ui);
     const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
-    const { handleSubmit, register, errors } = useForm();
+    const {
+        handleSubmit,
+        register,
+        formState: { errors },
+    } = useForm();
 
     const handleCloseLogin = () => {
         dispatch(uiCloseLogin());
@@ -48,6 +53,14 @@ const Login = () => {
         setShowPassword(!showPassword);
     };
 
+    const responseGoogle = (response) => {
+        dispatch(uiCloseLogin());
+        localStorage.setItem('user', JSON.stringify(response.profileObj))
+        setTimeout(() => {
+            dispatch(uiIsLogin(true)); 
+        }, 300);
+    };
+
     return (
         <div className="login">
             <div className="login__content animation__content s-pxy-3">
@@ -55,16 +68,15 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="s-mb-2">
                     <div className="input-group__box s-mb-2">
                         <input
-                            placeholder="Correo electrónico"
-                            name="email"
                             id="email"
+                            placeholder="Correo electrónico"
                             autoComplete="user"
                             className={`box__text ${
                                 errors.email ? "box__text--error s-mb-05" : ""
                             }`}
                             type="text"
-                            ref={register({
-                                required: "Campo obligatorio",
+                            {...register("email", {
+                                required: "Campo requerido",
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                     message: "Email inválido",
@@ -73,7 +85,7 @@ const Login = () => {
                         />
                         {errors.email && (
                             <span className="input-group__helper input-group__helper--error s-d-block s-left">
-                                {errors.email.message}
+                                {errors.email?.message}
                             </span>
                         )}
                     </div>
@@ -97,7 +109,6 @@ const Login = () => {
                         )}
                         <input
                             placeholder="Contraseña"
-                            name="password"
                             autoComplete="current-password"
                             className={`box__text box__text--icon-end ${
                                 errors.password
@@ -105,7 +116,7 @@ const Login = () => {
                                     : ""
                             }`}
                             type={showPassword ? "text" : "password"}
-                            ref={register({
+                            {...register("password", {
                                 required: "Campo requerido",
                             })}
                         />
@@ -137,9 +148,22 @@ const Login = () => {
                         <Facebook className="btn__icon btn__icon--start" />{" "}
                         Facebook
                     </button>
-                    <button className="btn btn--google btn--full">
-                        <Google className="btn__icon btn__icon--start" /> Google
-                    </button>
+                    <GoogleLogin
+                        clientId="754541191229-0n3t6sel54cqr0lc0m43kicl4fhu3ldk.apps.googleusercontent.com"
+                        render={(renderProps) => (
+                            <button
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                                className="btn btn--google btn--full"
+                            >
+                                <Google className="btn__icon btn__icon--start" />{" "}
+                                Google
+                            </button>
+                        )}
+                        buttonText="Login"
+                        onSuccess={responseGoogle}
+                        cookiePolicy={"single_host_origin"}
+                    />
                 </div>
                 <div className="login__register s-d-flex s-main-center">
                     <p className="s-mr-05">No tienes cuenta</p>

@@ -8,8 +8,6 @@ import CardCategory from "../components/card/CardCategory";
 import Delivery from "../assets/icons/Delivery.svg";
 import Chat from "../assets/icons/Chat.svg";
 import { ReactComponent as ChevronDown } from "../assets/icons/Chevron-down.svg";
-import { ReactComponent as Male } from "../assets/icons/Male.svg";
-import { ReactComponent as Female } from "../assets/icons/Female.svg";
 import { useWindowDimensions } from "../const/hooks/useWindowDimensions";
 import CardInfoSlider from "../components/home/CardInfoSlider";
 

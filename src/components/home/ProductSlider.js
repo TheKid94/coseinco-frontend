@@ -29,7 +29,7 @@ const ProductSlider = () => {
             className="product-slider s-pb-3"
             autoplay={{
                 delay: 2500,
-                disableOnInteraction: false,
+                disableOnInteraction: true,
             }}
             pagination={{
                 el: ".product-slider__pagination",
@@ -50,9 +50,8 @@ const ProductSlider = () => {
             }}
         >
             {novelties.map((product,index) => (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                     <CardProduct
-                        key={index}
                         sku={product._id}
                         img={product.imagenes[0]}
                         title={product.nombre}

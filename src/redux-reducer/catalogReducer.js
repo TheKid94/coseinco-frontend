@@ -2,6 +2,7 @@ import { types } from "../const/types";
 
 const initialState = {
     catalogByCategories: [],
+    priceByCategories: [],
     sizeByCategories: [],
     colorByCategories: [],
 };

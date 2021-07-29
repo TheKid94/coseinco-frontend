@@ -5,6 +5,9 @@ export const types = {
     closeCartP: '[ui] Close Cart Preview',
     openSearchH: '[ui] Open SearchH',
     closeSearchH: '[ui] Close SearchH',
+    activeLayout: '[ui] Active layout',
+    inactiveLayout: '[ui] Inactive layout',
+    isLogin: '[ui] User is loged',
     
     categoriesLoaded: '[layout] Get categories Layout', 
     infoLoaded: '[layout] Get Info Layout',
@@ -23,9 +26,11 @@ export const types = {
     changeColorSelected: '[producto-detail] Change color selected',
 
     cartProductAdded: '[cart] Add prodcut to cart',
+    cartProductLoaded: '[cart] Get List products by id',
     cartProductDeleted: '[cart] Delete product to cart',
     cartItemsNumberLoaded: '[cart] Get Number of items in cart',
     cartSubtotalLoaded: '[cart] Get Subtotal Cart',
-    cartProductUpdated: '[cart] Update producto to cart'
+    cartProductUpdated: '[cart] Update producto to cart',
+    cartShipmentInserted: '[cart] Insert shipment method'
 
 }

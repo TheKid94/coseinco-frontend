@@ -74,16 +74,6 @@ const LeftPanel = ({
 
     const [filters, setFilters] = useState(initialState);
 
-    const handleFilterBySize = (el) => {
-        sizeArray.push(el);
-        sizeFilter = sizeFilter.filter(
-            (size) => size.tallanombre !== el.tallanombre
-        );
-        setFilters({
-            ...filters,
-            size: getArrayObjectValueSize(sizeArray).toString(),
-        });
-    };
 
     const handleRemoveFilterSize = (el) => {
         sizeArray = sizeArray.filter((size) => size !== el);

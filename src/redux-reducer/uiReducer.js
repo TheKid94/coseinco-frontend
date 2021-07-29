@@ -4,6 +4,8 @@ const initialState = {
     openLogin: false,
     openCartP: false,
     openSearchH: false,
+    layout: true,
+    isLogin: false
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -48,6 +50,27 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 openSearchH: false,
             };
+        }
+
+        case types.activeLayout: {
+            return {
+                ...state,
+                layout: true
+            }
+        }
+
+        case types.inactiveLayout: {
+            return {
+                ...state,
+                layout: false
+            }
+        }
+
+        case types.isLogin: {
+            return {
+                ...state,
+                isLogin: action.payload
+            }
         }
         default:
             return state;

@@ -5,7 +5,7 @@ const baseUrl = "http://localhost:5000"
 export const getProductById = (id) => {
     return async (dispatch) => {
         try {
-            const resp = await fetch(`${baseUrl}/api/v1/productos/${id}`);
+            const resp = await fetch(`${baseUrl}/api/productos/${id}`);
             const data = await resp.json();
             dispatch(productDetailLoaded(data.data.doc));
         } catch (error) {
@@ -43,7 +43,7 @@ export const getProductsRelated = (id) => {
     return async (dispatch) => {
         try {
             const resp = await fetch(
-                `${baseUrl}//findListaRecomendadosByCategoria/${id}`
+                `${baseUrl}/findListaRecomendadosByCategoria/${id}`
             );
             const data = await resp.json();
             dispatch(productsRelatedLoaded(data));

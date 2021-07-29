@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getBanners } from "../../redux-action/homeAction";
+// import { getBanners } from "../../redux-action/homeAction";
 
 SwiperCore.use([Pagination, A11y, Autoplay]);
 

@@ -2,32 +2,47 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { uiCloseCartP } from "../../redux-action/uiAction";
-import { getProductById } from "../../redux-action/productDetailAction";
-
-import motherboard from "../../assets/images/products/motherboard.png";
-import procesador from "../../assets/images/products/procesador.jpg";
 import { useHistory } from "react-router";
 
-const CartProduct = ({ img, title, quantity, price }) => {
+import { getProductsById } from "../../redux-action/cartAction";
+
+const CartProduct = ({ link,img, title, quantity, price, closeCart }) => {
     return (
         <div className="cart-preview__product">
-            <a href="www.google.com" className="product__link">
+            <Link to={link} className="product__link" onClick={ () => closeCart() }>
                 <img src={img} alt={title} className="product__img" />
-            </a>
+            </Link>
             <span className="product__title t--body-3 t--primary">{title}</span>
             <span className="t--body-3 t--secundary">Cantidad: {quantity}</span>
             <span className="t--price s-right t--heading-5">{price}</span>
         </div>
     );
 };
+
 const CartPreview = () => {
     const [itemsCart, setItemsCart] = useState(null);
+    const [productsId, setProductsId] = useState([]);
+    const { productsList, subtotal } = useSelector(state => state.cart)
     const history = useHistory();
     const dispatch = useDispatch();
 
     const handleCloseCartP = () => {
         dispatch(uiCloseCartP());
     };
+
+    useEffect(() => {
+        if (itemsCart !== null) {
+            setProductsId(...productsId, itemsCart.map((item) => (
+                item.idProducto
+                )))
+        }
+    }, [itemsCart])
+
+    useEffect(() => {
+        if (productsId.length > 0) {
+            dispatch(getProductsById(productsId))
+        }
+    }, [dispatch, productsId])
 
     const { openCartP } = useSelector((state) => state.ui);
 
@@ -69,21 +84,28 @@ const CartPreview = () => {
                         <h3 className="s-mb-05">Carrito de compras</h3>
                         <p className="t--body-3 s-mb-2">
                             {" "}
-                            ({itemsCart.length}) Productos{" "}
+                            ({productsList.length}) Productos{" "}
                         </p>
                         <div className="cart-preview__products s-pb-2 s-mb-2">
-                            <CartProduct
-                                img={procesador}
-                                title="Intel I5 11400F 2.5GHZ"
-                                quantity={1}
-                                price={950.5}
-                            />
+                            {
+                                productsList.map((product, index) => (
+                                    <CartProduct
+                                        key={index}
+                                        link={`/producto/${product._id}/${product.nombre}`}
+                                        img={product.imagenes[0]}
+                                        title={product.nombre}
+                                        quantity={product.cantidadCarrito}
+                                        price={product.subtotalProduct}
+                                        closeCart= {handleCloseCartP}
+                                    />
+                                ))
+                            }
                         </div>
                         <div className="t--heading-4 d-flex s-main-justify s-mb-2">
                             <span className="cart-preview-content__subtotal">
-                                Subtotal({itemsCart.length})
+                                Subtotal({productsList.length})
                             </span>
-                            <span className="t--price">128.00</span>
+                            <span className="t--price"> {subtotal} </span>
                         </div>
                         <button
                             onClick={handleGoCart}

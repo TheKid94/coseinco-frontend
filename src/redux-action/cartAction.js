@@ -1,6 +1,6 @@
 import { types } from "../const/types";
 
-const baseUrl = "https://ezzetacompany.com/tienda";
+const baseUrl = "http://localhost:5000/api";
 
 export const cartProductAdd = (product) => {
     return async (dispatch) => {
@@ -10,7 +10,7 @@ export const cartProductAdd = (product) => {
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify(product)
+                body: JSON.stringify(product),
             });
             const data = await resp.json();
             dispatch(cartProductAdded(data));
@@ -22,10 +22,87 @@ export const cartProductAdd = (product) => {
 
 const cartProductAdded = (resp) => ({
     type: types.cartProductAdded,
-    payload: resp
+    payload: resp,
+});
+
+export const getProductsById = (productsId) => {
+    const body = {
+        productoid: productsId,
+    };
+    return async (dispatch) => {
+        try {
+            const resp = await fetch(`${baseUrl}/productos/productoCarrito`, {
+                method: "post",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(body),
+            });
+            const data = await resp.json();
+            const {carritoProducto} =  getProductQuantityCart(data);
+            const subtotal = getSubtotalCart(carritoProducto);
+            dispatch(cartProductsLoaded(carritoProducto));
+            dispatch(subtotalLoaded(subtotal));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+const getProductQuantityCart = (data) => {
+    const cartProducts = JSON.parse(localStorage.getItem("carrito"));
+    for (let i = 0; i < data.carritoProducto.length; i++) {
+        if (cartProducts[i].idProducto === data.carritoProducto[i]._id) {
+            data.carritoProducto[i] = {
+                ...data.carritoProducto[i],
+                cantidadCarrito: cartProducts[i].cantidad,
+                subtotalProduct:
+                    cartProducts[i].cantidad * data.carritoProducto[i].precio,
+            };
+        }
+    }
+    return data;
+};
+
+
+export const postOrder = (orderData) => {
+    console.log(JSON.stringify(orderData));
+    return async (dispatch) => {
+        try {
+            const resp = await fetch(`${baseUrl}/pedidos/`, {
+                method: "post",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(orderData),
+            });
+            const data = await resp.json();
+            localStorage.removeItem('carrito');
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+const getSubtotalCart = (data) => {
+    let subtotal = 0;
+    for (let i = 0; i < data.length; i++) {
+        subtotal += data[i].subtotalProduct;
+    }
+    return subtotal.toFixed(2);
+};
+
+export const insertShipment = (data) => ({
+    type: types.cartShipmentInserted,
+    payload: data
 })
+const subtotalLoaded = (resp) => ({
+    type: types.cartSubtotalLoaded,
+    payload: resp,
+});
 
-
-export const cartProductDelete = () =>{}
-
-const cartProductDeleted = () =>{}
+const cartProductsLoaded = (resp) => ({
+    type: types.cartProductLoaded,
+    payload: resp,
+});

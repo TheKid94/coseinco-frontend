@@ -1,34 +1,23 @@
 .card-product {
     position: relative;
     border-radius: $border-radious;
-    &__colors-box {
-        border: 2px solid $ui-03;
-        border-radius: 50%;
-        padding: 2px;
-        .color-box__content {
-            border-radius: 50%;
-            width: 0.75rem;
-            height: 0.75rem;
-            padding: 0.25rem;
-        }
-        &--add {
-            .color-box__content {
-                position: relative;
-                svg {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: rem(14px);
-                    height: rem(14px);
-                    path{
-                        fill: $text-02
-                    }
-                }
-            }
-        }
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &:hover .card-product__box .card-product__img{
+        transform: scale(1.05);
     }
-
+    &__box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        overflow: hidden;
+    }
+    &__img{
+        transition: .25s ease;
+    }
     &__offert {
         position: absolute;
         top: 0;

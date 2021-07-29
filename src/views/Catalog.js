@@ -27,7 +27,6 @@ const Catalog = () => {
     const { sizeByCategories, colorByCategories } = useSelector(
         (state) => state.catalog
     );
-    const { catalogByCategories } = useSelector((state) => state.catalog);
     const { novelties } = useSelector((state) => state.home);
 
     useEffect(() => {

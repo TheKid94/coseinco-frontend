@@ -13,6 +13,7 @@
 @import "./components/layout/header/header";
 @import "./components/layout/header/search-header";
 @import "./components/layout/header/topbanner";
+@import "./components/layout/layoutAdmin";
 @import "./components/layout/footer/footer";
 @import './components/home/banner-slider';
 @import './components/home/product-slider';
@@ -21,7 +22,10 @@
 @import "./components/cart/cart-preview";
 @import "./components/ui/fixed-button";
 @import "./components/ui/collapsible";
+@import "./components/ui/table";
 @import "./components/catalog/left-panel";
 @import "./components/product/detail-product";
 @import "./components/product/related-products";
 @import './views/home';
+@import './views/cart';
+@import './views/order';

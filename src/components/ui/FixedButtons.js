@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { ReactComponent as Whatsapp } from "../../assets/icons/Whatsapp.svg";
 import { ReactComponent as Chevron } from "../../assets/icons/Chevron-up.svg";
 import { CSSTransition } from "react-transition-group";
-import { useSelector } from "react-redux";
+
 const FixedButtons = () => {
 
-    const { info } = useSelector((state) => state.layout);
-    
     const [showScroll, setShowScroll] = useState(false);
 
     const scrollTop = () => {

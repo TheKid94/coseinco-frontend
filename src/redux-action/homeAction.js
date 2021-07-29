@@ -25,7 +25,7 @@ const bannersLoaded = (banners) =>({
 export const getNovelties = () => {
     return async (dispatch) =>{
         try {
-            const resp = await fetch(`${baseUrl}/api/v1/productos`);
+            const resp = await fetch(`${baseUrl}/api/productos`);
             const data = await resp.json()
             dispatch(noveltiesLoaded(data.data.data));
 

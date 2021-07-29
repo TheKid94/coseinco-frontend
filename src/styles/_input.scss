@@ -189,11 +189,16 @@ input {
 
 
 .input-select{
-   
+    &--error{
+        .input-select__control {
+            border: 1px solid $text-error !important;
+        }
+    }
     &__control{
-        min-width: rem(234px);
+        // min-width: rem(234px);
         background-color: $field-01 !important;
-        height: 33px;
+        min-height: 35px !important;
+        height: 35px !important;
         border: none !important;
         &--is-focused{
             border: 1px solid $interactive !important;
