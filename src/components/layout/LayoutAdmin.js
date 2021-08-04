@@ -17,23 +17,6 @@ const LayoutAdmin = ({ children }) => {
           </div>
           <h2 className="s-center"> Coseinco </h2>
         </div>
-        {/*<ul className="s-d-flex s-column s-px-1">
-           <Link to="/">
-                        <button className="btn btn--full btn--ghost">
-                            Ecommerce
-                        </button>
-                    </Link>
-                    <Link to="/productos">
-                        <button className="btn btn--full btn--ghost">
-                            Productos
-                        </button>
-                    </Link>
-                    <Link to="inventario">
-                        <button className="btn btn--full btn--ghost">
-                            Inventario
-                        </button>
-                    </Link> 
-        </ul>*/}
         <ul className="admin-menu">
           <li className="menu-heading">
             <h3>Admin</h3>

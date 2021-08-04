@@ -50,7 +50,7 @@ const Paypal = ({amount}) => {
                     purchase_units: [{
                         description: 'Cool looking table',
                         amount: {
-                            value: 1566,
+                            value: parseFloat(amount),
                             currency: 'USD'
                         }
                     }],

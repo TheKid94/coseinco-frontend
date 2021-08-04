@@ -38,6 +38,7 @@ const DetailProductSlider = ({ productsImg }) => {
                     className="detail-product__slider-main"
                     navigation
                     thumbs={{ swiper: thumbsSwiper }}
+                    loop
                 >
                     {productsImg &&
                         productsImg.map((product, index) => (
@@ -140,6 +141,7 @@ const DetailProduct = () => {
                     <button
                         style={{ alignSelf: "flex-end" }}
                         className="btn btn--full btn--primary btn--large s-75"
+                        disabled={product.stock === 0}
                         onClick={handleAddToCart}
                     >
                         Añadir al carrito

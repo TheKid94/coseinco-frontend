@@ -77,9 +77,6 @@ const Header = () => {
             <h1> COSEINCO </h1>
           </Link>
         </div>
-{
-  console.log(isLogin, userStorage)
-}
         {width > 1023 && (
           <div className="header__search lg-cols-5">
             <div className="input-group__box input-group__box--header">

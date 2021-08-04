@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useWindowDimensions } from "../../../const/hooks/useWindowDimensions";
 
 import { ReactComponent as Chat } from "../../../assets/icons/Chat.svg";
@@ -13,17 +13,9 @@ import { ReactComponent as Facebook } from "../../../assets/icons/Facebook.svg";
 import { ReactComponent as Instagram } from "../../../assets/icons/Instagram.svg";
 
 import Collapsible from "../../ui/Collapsible";
-import { useDispatch, useSelector } from "react-redux";
-import { getInfo } from "../../../redux-action/layoutAction";
+
 
 const Footer = () => {
-    const { info } = useSelector((state) => state.layout);
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getInfo());
-    }, [dispatch]);
 
     const { width } = useWindowDimensions();
     return (
@@ -36,7 +28,7 @@ const Footer = () => {
                             <div className="footer__item s-mb-2 s-d-flex">
                                 <Chat className="footer__icon s-mr-1" />
                                 <a
-                                    href={info.establecimientochatfb}
+                                    href="/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="footer__link"
@@ -52,7 +44,7 @@ const Footer = () => {
                             <div className="footer__item s-mb-2 s-d-flex">
                                 <Headset className="footer__icon s-mr-1" />
                                 <a
-                                    href={`tel:${info.establecimientocelular}`}
+                                    href={`tel: 983734000`}
                                     className="footer__link"
                                 >
                                     <span className="t--heading-5 s-d-block">
@@ -60,14 +52,14 @@ const Footer = () => {
                                     </span>
                                     <span className="t--body-2 s-d-block">
                                         Llamanos al{" "}
-                                        {info.establecimientocelular}
+                                        {983734000}
                                     </span>
                                 </a>
                             </div>
                             <div className="footer__item s-mb-2 s-d-flex">
                                 <Mail className="footer__icon s-mr-1" />
                                 <a
-                                    href={`mailto:${info.establecimientocorreo}`}
+                                    href={`mailto: coseinco@gmail.com`}
                                     className="footer__link"
                                 >
                                     <span className="t--heading-5 s-d-block">
@@ -166,7 +158,7 @@ const Footer = () => {
                             <div className="footer__item s-mb-2 s-d-flex">
                                 <Chat className="footer__icon s-mr-1" />
                                 <a
-                                    href={info.establecimientochatfb}
+                                    href="google"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="footer__link s-d-block s-w-100"
@@ -182,29 +174,29 @@ const Footer = () => {
                             <div className="footer__item s-mb-2 s-d-flex">
                                 <Headset className="footer__icon s-mr-1" />
                                 <a
-                                    href={`tel:${info.establecimientocelular}`}
+                                    href={`tel: 983734000`}
                                     className="footer__link s-d-block s-w-100"
                                 >
                                     <span className="t--heading-5 s-d-block">
                                         ¿Tienes alguna duda?
                                     </span>
                                     <span className="t--body-2 s-d-block">
-                                        Llamanos al{" "}
-                                        {info.establecimientocelular}
+                                        Llamanos al
+                                        983734000
                                     </span>
                                 </a>
                             </div>
                             <div className="footer__item s-mb-2 s-d-flex">
                                 <Mail className="footer__icon s-mr-1" />
                                 <a
-                                    href={`mailto:${info.establecimientocorreo}`}
+                                    href={`mailto: coseinco@gmail.com`}
                                     className="footer__link s-d-block s-w-100"
                                 >
                                     <span className="t--heading-5 s-d-block">
                                         Escríbenos
                                     </span>
                                     <span className="footer__text--secundary t--body-2 s-d-block">
-                                        {info.establecimientocorreo}
+                                        coseinco@gmail.com
                                     </span>
                                 </a>
                             </div>
@@ -302,7 +294,7 @@ const Footer = () => {
                     <div className="footer__social-media  s-py-2 md-py-0">
                         <h3 className="s-mb-2 md-mb-4">Siguenos en:</h3>
                         <a
-                            href={info.establecimientourlfb}
+                            href="/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="s-mr-3"
@@ -310,7 +302,7 @@ const Footer = () => {
                             <Facebook className="footer__icon" />
                         </a>
                         <a
-                            href={info.establecimientourlinstagram}
+                            href="/"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

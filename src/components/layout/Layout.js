@@ -13,7 +13,8 @@ const Layout = ({ children }) => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        location.pathname === "/inventario"
+        location.pathname === "/inventario" ||
+        location.pathname === "/pedidos"
             ? dispatch(uiInactiveLayout())
             : dispatch(uiActiveLayout())
     }, [location, dispatch]);

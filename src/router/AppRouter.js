@@ -11,6 +11,7 @@ import Cart from "../views/Cart";
 import Catalog from "../views/Catalog";
 import Home from "../views/Home";
 import Order from "../views/Order";
+import Orders from "../views/Orders";
 import Payment from "../views/Payment";
 import Product from "../views/Product";
 import Search from "../views/Search";
@@ -52,6 +53,7 @@ const AppRouter = () => {
                         component={Product}
                     />
                     <Route exact path="/inventario" component={Warehouse} />
+                    <Route exact path="/pedidos" component={Orders} />
                     <Redirect to="/" />
                 </Switch>
             </Layout>

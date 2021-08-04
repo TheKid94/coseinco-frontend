@@ -49,6 +49,24 @@ export const getProductsById = (productsId) => {
     };
 };
 
+export const saveOrder = (orderData) => {
+    return async (dispatch) => {
+        try {
+            const resp = await fetch(`${baseUrl}/pedidos`, {
+                method: "post",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(orderData),
+            });
+            const data = await resp.json();
+            dispatch(orderCreated(data));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
 const getProductQuantityCart = (data) => {
     const cartProducts = JSON.parse(localStorage.getItem("carrito"));
     for (let i = 0; i < data.carritoProducto.length; i++) {
@@ -64,27 +82,6 @@ const getProductQuantityCart = (data) => {
     return data;
 };
 
-
-export const postOrder = (orderData) => {
-    console.log(JSON.stringify(orderData));
-    return async (dispatch) => {
-        try {
-            const resp = await fetch(`${baseUrl}/pedidos/`, {
-                method: "post",
-                headers: {
-                    "Content-type": "application/json",
-                },
-                body: JSON.stringify(orderData),
-            });
-            const data = await resp.json();
-            localStorage.removeItem('carrito');
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
-
 const getSubtotalCart = (data) => {
     let subtotal = 0;
     for (let i = 0; i < data.length; i++) {
@@ -93,6 +90,10 @@ const getSubtotalCart = (data) => {
     return subtotal.toFixed(2);
 };
 
+const orderCreated = (data) => ({
+    type: types.orderLoaded,
+    payload: data
+})
 export const insertShipment = (data) => ({
     type: types.cartShipmentInserted,
     payload: data

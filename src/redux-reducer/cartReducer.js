@@ -4,6 +4,7 @@ const initialState = {
     productsList: [],
     subtotal: 0,
     shipment: {},
+    order: {}
 };
 
 export const cartReducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ export const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 shipment: action.payload
+            }
+        case types.orderLoaded:
+            return {
+                ...state,
+                order: action.payload
             }
         default:
             return state;

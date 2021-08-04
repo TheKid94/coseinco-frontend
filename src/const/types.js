@@ -31,6 +31,6 @@ export const types = {
     cartItemsNumberLoaded: '[cart] Get Number of items in cart',
     cartSubtotalLoaded: '[cart] Get Subtotal Cart',
     cartProductUpdated: '[cart] Update producto to cart',
-    cartShipmentInserted: '[cart] Insert shipment method'
-
+    cartShipmentInserted: '[cart] Insert shipment method',
+    orderLoaded: '[order] Order loaded'
 }

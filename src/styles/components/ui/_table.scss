@@ -5,7 +5,6 @@ $breakpoint-alpha: 480px; // adjust to your needs
 .rwd-table {
     margin: 1em 0;
     min-width: 300px; // adjust to your needs
-
     tr {
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
@@ -69,6 +68,9 @@ $breakpoint-alpha: 480px; // adjust to your needs
         background: $ui-01;
         tr{
             border-color: $ui-01;
+            th {
+                font-weight: $font-w-semibold;
+            }
         }
     }
     tr {
@@ -77,6 +79,7 @@ $breakpoint-alpha: 480px; // adjust to your needs
     th,
     td {
         margin: 0.5em 1em;
+        font-weight: $font-w-normal;
         @media (min-width: $breakpoint-alpha) {
             padding: .75em !important;
         }
